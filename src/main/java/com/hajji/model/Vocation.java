@@ -30,7 +30,7 @@ public class Vocation {
 
     private String description;
 
-    private boolean bagitarian;
+    private boolean vagitarian = true;
 
     private LocalDateTime createdAt;
 

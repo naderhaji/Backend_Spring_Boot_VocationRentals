@@ -68,7 +68,7 @@ public class VocationServiceImplentation implements VocationService {
         } else {
             vocation.getLikes().add(user.getId());
         }
-        return null;
+        return vocationRepository.save(vocation);
     }
 
     @Override
@@ -77,6 +77,7 @@ public class VocationServiceImplentation implements VocationService {
             createdVocation.setTitle(vocation.getTitle());
             createdVocation.setImage(vocation.getImage());
             createdVocation.setDescription(vocation.getDescription());
+            createdVocation.setVagitarian(true);
             createdVocation.setUser(user);
             createdVocation.setCreatedAt(LocalDateTime.now());
             return vocationRepository.save(createdVocation);

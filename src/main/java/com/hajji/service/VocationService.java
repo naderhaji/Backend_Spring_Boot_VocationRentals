@@ -9,7 +9,7 @@ import com.hajji.model.Vocation;
 
 public interface VocationService {
 
-    public Vocation createVocation(Vocation vocation, User user) throws Exception;
+    public Vocation createVocation(Vocation vocation, User user);
     
     public Vocation findVocationById(Long id) throws Exception;
     
