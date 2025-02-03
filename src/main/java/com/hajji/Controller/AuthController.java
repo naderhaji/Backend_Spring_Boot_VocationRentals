@@ -85,7 +85,7 @@ public AuthResponse signinHandler(@RequestBody LoginRequest loginRequest){
         AuthResponse res = new AuthResponse();
     
         res.setJwt(Token);
-        res.setMessage("signup success");
+        res.setMessage("signin success");
     
     
         return res;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,9 +32,9 @@ public class VocationController {
     private UserService userService;
 
 
-    @PostMapping("/user/{userId}")
-    public Vocation createVocation(@RequestBody Vocation vocation, @PathVariable long userId) throws Exception{
-        User user = userService.findUserById(userId);
+    @PostMapping()
+    public Vocation createVocation(@RequestBody Vocation vocation, @RequestHeader("Authorization") String jwt) throws Exception{
+        User user = userService.findUserByJwt(jwt);
         Vocation vocationCreated = vocationService.createVocation(vocation, user);
         return vocationCreated;
         
@@ -57,10 +58,10 @@ public class VocationController {
         return vocationUpdated;
     }
 
-    @PutMapping("/{id}/like/user/{userId}")
-    public Vocation likeVocation(@PathVariable Long userId, @PathVariable Long id) throws Exception{
+    @PutMapping("/{id}/like")
+    public Vocation likeVocation(@RequestHeader("Authorization") String jwt, @PathVariable Long id) throws Exception{
 
-        User user = userService.findUserById(userId);
+        User user = userService.findUserByJwt(jwt);
         Vocation vocationUpdated = vocationService.likeVocation(id, user);
         return vocationUpdated;
     }

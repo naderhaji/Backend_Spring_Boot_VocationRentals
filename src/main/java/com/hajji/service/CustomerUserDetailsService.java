@@ -3,6 +3,7 @@ package com.hajji.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +15,8 @@ import com.hajji.repository.UserRepository;
 
 @Service
 public class CustomerUserDetailsService implements UserDetailsService {
-
+    
+    @Autowired
     private UserRepository userRepository;
 
 
